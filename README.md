@@ -1,6 +1,10 @@
 ### c-examples
 ###### simple examples of useful C programs
 
+The array and environment examples now compose named Icky C traversals. See
+[the source and build boundary](ICKY-C.md), and build them with
+`make ICK=/absolute/path/to/ick lists`.
+
 
 Pick up a programming book. If it’s not K&R, the chapters will be labelled `control flow`, `lists`, `scalars`, `filehandles`, …. If it’s K&R, the organisation will at least be readable, but you 
 
