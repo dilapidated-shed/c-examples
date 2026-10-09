@@ -1,0 +1,44 @@
+name: Icky C list examples
+
+on:
+  pull_request:
+    paths:
+      - '*.c'
+      - 'Makefile'
+      - 'ICKY-C.md'
+      - 'ci/**'
+      - '.github/workflows/icky-c-lists.yml'
+  push:
+    branches: [master]
+    paths:
+      - '*.c'
+      - 'Makefile'
+      - 'ICKY-C.md'
+      - 'ci/**'
+      - '.github/workflows/icky-c-lists.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lists:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: isomorphisms/ai-ci/ick-host@ba3ff90023b09e525313793554edecf2141ff95b
+        id: ick
+      - name: Compile and execute the two converted examples
+        run: make ICK="${{ steps.ick.outputs.compiler }}" ICK_LINK_FLAGS="${{ steps.ick.outputs.link_flags }}" smoke
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: isomorphisms/ai-ci
+          ref: ba3ff90023b09e525313793554edecf2141ff95b
+          path: .source-policy
+          persist-credentials: false
+      - name: Enforce assignments in the converted source
+        run: make -f .source-policy/c-source/Makefile ICK="${{ steps.ick.outputs.compiler }}" check FILES="arrays_n_pointers.c print_environ.c"

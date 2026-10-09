@@ -1,0 +1,10 @@
+path	role	evidence
+arrays_n_pointers.c	REFACTORED_ICKY_C	ICKY-C.md
+print_environ.c	REFACTORED_ICKY_C	ICKY-C.md
+ncurses-1.c	REVIEWED_ASSIGNMENT_NEUTRAL_C_BUILD_PENDING	ICKY-C.md
+ncurses-colour.c	EXISTING_INVALID_PROGRAM_REPAIR_REQUIRED	ICKY-C.md
+ncurses-sierpinski.c	LINE_NUMBERED_SNIPPET_MISSING_HEADER	ICKY-C.md
+stream-socket-server_beejus.c	SOURCE_AND_BUILD_REVIEW_REQUIRED	README.md
+what-is-the-shell?/sh.c	SOURCE_AND_BUILD_REVIEW_REQUIRED	what-is-the-shell?/README.md
+what-is-the-shell?/suckless_terminal/st.c	SOURCE_AND_BUILD_REVIEW_REQUIRED	what-is-the-shell?/suckless_terminal/README
+what-is-the-shell?/suckless_terminal/x.c	SOURCE_AND_BUILD_REVIEW_REQUIRED	what-is-the-shell?/suckless_terminal/README
