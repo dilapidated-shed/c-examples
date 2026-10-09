@@ -12,8 +12,8 @@ Build with the real ICK compiler:
     make ICK=/absolute/path/to/ick lists
 
 The native CI producer is isomorphisms/ai-ci at
-f538ed81669ceb2d521b65fc3b3af7c2e51dd2f2, which builds ICK at
-c5d28dde9cc333a562b907785d0370b725146cdf over the pinned GCC source.
+ba3ff90023b09e525313793554edecf2141ff95b, which builds ICK at
+c61e448251744a2f40ad743ebef1a027bdcd2f9d over the pinned GCC source.
 Its documented scalar runtime profile uses declared prebuilt host startup and
 runtime libraries. It does not qualify a complete ICK runtime or another target.
 
@@ -27,3 +27,7 @@ still needs its own source review and producer/runtime qualification. In
 particular, the Sierpinski file contains copied line numbers and references a
 missing getrandom_int.h, and the color file repeats is_move_okay before its
 includes/definitions. Their existing failures are not classified as passing.
+
+The 2026-10-09 division migration changes the array-length calculation to
+`sizeof(example_values) ÷ sizeof(example_values[0])`. A forced rebuild with current ICK passed
+the array output checks and the exact two-line synthetic environment comparison.

@@ -22,7 +22,7 @@ int main(void)
 {
     const int example_values[5] ← {1, 2, 3, 4, 5};
     print_indexed_values(example_values,
-                         sizeof(example_values) / sizeof(example_values[0]));
+                         sizeof(example_values) ÷ sizeof(example_values[0]));
     print_first_value_reference(example_values);
     return 0;
 }

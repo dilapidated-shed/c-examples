@@ -30,14 +30,14 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
-      - uses: isomorphisms/ai-ci/ick-host@f538ed81669ceb2d521b65fc3b3af7c2e51dd2f2
+      - uses: isomorphisms/ai-ci/ick-host@ba3ff90023b09e525313793554edecf2141ff95b
         id: ick
       - name: Compile and execute the two converted examples
         run: make ICK="${{ steps.ick.outputs.compiler }}" ICK_LINK_FLAGS="${{ steps.ick.outputs.link_flags }}" smoke
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: isomorphisms/ai-ci
-          ref: f538ed81669ceb2d521b65fc3b3af7c2e51dd2f2
+          ref: ba3ff90023b09e525313793554edecf2141ff95b
           path: .source-policy
           persist-credentials: false
       - name: Enforce assignments in the converted source
